@@ -1,7 +1,10 @@
 @import (reference) "~seek-style-guide/theme";
 
+@toggleHeight: @row-height * 5;
+@toggleWidth: 48px;
+
 .root {
-  line-height: @row-height * 5;
+  line-height: @toggleHeight;
   height: @row-height * 8;
   padding: (@row-height * 2) 0;
   cursor: pointer;
@@ -14,24 +17,25 @@
 }
 
 .input {
+  opacity: 0;
   position: absolute;
-  left: 10px;
-  top: 5px;
   margin: 0;
+  width: @toggleWidth;
+  height: @toggleHeight;
 
-  &:focus ~ .slider .slideButton::before {
+  &:focus ~ label .slider .slideButton::before {
     border: 1px solid @sk-focus;
   }
 
   @slide-distance: 21px;
   @anticipation-distance: 4px;
-  &:active ~ .slider .slideButton {
+  &:active ~ label .slider .slideButton {
     transform: translateX(-@anticipation-distance);
   }
-  &:checked:active ~ .slider .slideButton {
+  &:checked:active ~ label .slider .slideButton {
     transform: translateX(@slide-distance + @anticipation-distance);
   }
-  &:checked ~ .slider .slideButton {
+  &:checked ~ label .slider .slideButton {
     transform: translateX(@slide-distance);
 
     &::before {
@@ -39,11 +43,11 @@
     }
   }
 
-  &:checked ~ .slider .slideButton :global(svg) {
+  &:checked ~ label .slider .slideButton :global(svg) {
     opacity: 1;
   }
 
-  &:checked ~ .label {
+  &:checked ~ label .label {
     font-weight: @sk-bold;
   }
 }
@@ -66,15 +70,15 @@
 }
 
 .labelText {
-  line-height: @row-height * 5;
+  line-height: @toggleHeight;
 }
 
 .slider {
   position: relative;
   display: inline-block;
   left: 0;
-  width: 48px;
-  height: @row-height * 5;
+  width: @toggleWidth;
+  height: @toggleHeight;
   border-radius: @row-height * 2.5;
   background-color: @sk-mid-gray-light;
   transition: 0.3s;
@@ -89,8 +93,8 @@
     content: '';
     transition: 0.3s;
     position: absolute;
-    height: @row-height * 5;
-    width: @row-height * 5;
+    height: @toggleHeight;
+    width: @toggleHeight;
     border-radius: 50%;
     background-color: @sk-mid-gray;
     box-shadow: inset 0 -2px fade(@sk-black, 10%);
@@ -100,8 +104,8 @@
 
 .icon {
   position: absolute;
-  width: @row-height * 5;
-  height: @row-height * 5;
+  width: @toggleHeight;
+  height: @toggleHeight;
   text-align: center;
 }
 
