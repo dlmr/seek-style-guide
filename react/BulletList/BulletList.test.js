@@ -1,16 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import BulletPoint from './BulletPoint';
-
 import Text from '../Text/Text';
 
-describe('BulletPoint', () => {
+import BulletList from './BulletList';
+
+describe('BulletList', () => {
   it('renders with standard text', () => {
     const wrapper = shallow(
-      <BulletPoint>
+      <BulletList>
         <Text>Foo</Text>
-      </BulletPoint>
+        <Text>Bar</Text>
+      </BulletList>
     );
     expect(wrapper).toMatchSnapshot();
   });
